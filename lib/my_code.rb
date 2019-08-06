@@ -11,7 +11,13 @@ end
 def reduce(source_array, starting_point = 0)
   value = starting_point
   source_array.each do |element|
-    value = yield(value, element)
+    if element == true
+      value = true
+    else 
+      value = yield(value, element)
+    end
   end
   value
 end
+arr = [1, 2, 3, 4]
+reduce(arr){|memo, n| memo + n}
